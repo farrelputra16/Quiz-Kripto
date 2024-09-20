@@ -1,85 +1,66 @@
-# Aplikasi Cipher
+# Quiz Kriptografi
 
-Aplikasi ini adalah sebuah aplikasi berbasis GUI menggunakan Python yang memungkinkan pengguna untuk mengenkripsi dan mendekripsi teks menggunakan tiga jenis cipher: Vigenère, Playfair, dan Hill cipher. Aplikasi ini menyediakan opsi untuk input melalui keyboard dan juga unggahan file untuk teks.
+**Farrel Arkesya Kahira Putra**
 
-## Fitur
+**4611422089**
 
-- **Cipher Vigenère**: Mengenkripsi dan mendekripsi teks menggunakan kata kunci di mana setiap huruf dalam teks digeser oleh huruf yang sesuai dalam kunci.
-- **Cipher Playfair**: Cipher substitusi yang mengenkripsi pasangan huruf.
-- **Cipher Hill**: Cipher substitusi poligrafik yang menggunakan aljabar linear untuk mengenkripsi pasangan huruf dengan matriks kunci 2x2.
-- **Opsi Input**: Pengguna dapat memasukkan teks melalui keyboard atau mengunggah file `.txt`.
-- **Antarmuka Pengguna**: GUI yang sederhana dan mudah digunakan dibangun dengan Tkinter.
+**Kriptografi**
 
-## Persyaratan
+## Cara Menjalankan Program
 
-- Python 3.x
-- Tkinter (biasanya sudah terinstal dengan Python)
-- Numpy
+1. **Persyaratan**:
+   - Python 3.x
+   - Tkinter (seharusnya sudah termasuk dalam instalasi Python)
+   
+2. **Instalasi**:
+   - Clone repositori ini:
+     ```bash
+     git clone https://github.com/farrelputra16/quiz-kriptografi.git
+     ```
+   - Masuk ke direktori:
+     ```bash
+     cd quiz-kriptografi
+     ```
 
-Untuk menginstal pustaka yang diperlukan, Anda bisa menjalankan perintah berikut:
+3. **Menjalankan Program**:
+   - Jalankan program dengan perintah berikut:
+     ```bash
+     python main.py
+     ```
+   - Antarmuka pengguna akan muncul, memungkinkan Anda untuk memasukkan teks dan kunci untuk mengenkripsi atau mendekripsi.
 
-```bash
-pip install numpy
-# Aplikasi Cipher
 
-Aplikasi ini adalah sebuah aplikasi berbasis GUI menggunakan Python yang memungkinkan pengguna untuk mengenkripsi dan mendekripsi teks menggunakan tiga jenis cipher: Vigenère, Playfair, dan Hill cipher. Aplikasi ini menyediakan opsi untuk input melalui keyboard dan juga unggahan file untuk teks.
+## Overview Program
+Program ini adalah alat untuk mengenkripsi dan mendekripsi teks menggunakan tiga jenis cipher:
+- **Vigenere Cipher**
 
-## Fitur
+Cara Kerja: Menggunakan kunci untuk menggeser setiap huruf dalam teks. Misalnya, jika huruf dalam teks adalah A dan kuncinya B, maka A akan digeser menjadi B.
+Input: Teks dan kunci. Kunci harus panjangnya minimal 12 karakter (kecuali untuk Hill Cipher).
+Fungsi: `vigenere_cipher(text, key, encrypt)` untuk melakukan enkripsi atau dekripsi.
+- **Playfair Cipher**
 
-- **Cipher Vigenère**: Mengenkripsi dan mendekripsi teks menggunakan kata kunci di mana setiap huruf dalam teks digeser oleh huruf yang sesuai dalam kunci.
-- **Cipher Playfair**: Cipher substitusi yang mengenkripsi pasangan huruf.
-- **Cipher Hill**: Cipher substitusi poligrafik yang menggunakan aljabar linear untuk mengenkripsi pasangan huruf dengan matriks kunci 2x2.
-- **Opsi Input**: Pengguna dapat memasukkan teks melalui keyboard atau mengunggah file `.txt`.
-- **Antarmuka Pengguna**: GUI yang sederhana dan mudah digunakan dibangun dengan Tkinter.
+Cara Kerja: Menggunakan matriks 5x5 yang diisi dengan huruf dari kunci dan sisa huruf dari alfabet (tanpa huruf J). Teks dibagi menjadi pasangan huruf, dan setiap pasangan diproses berdasarkan posisi dalam matriks.
+Input: Teks dan kunci. Huruf J akan diubah menjadi I.
+Fungsi: `playfair_cipher(text, key, encrypt)` untuk enkripsi atau dekripsi.
+- **Hill Cipher**
 
-## Persyaratan
+Cara Kerja: Menggunakan operasi matriks. Kunci harus berbentuk matriks 2x2. Setiap dua huruf dalam teks diproses menggunakan kunci.
+Input: Teks dan kunci dalam bentuk matriks (misalnya, 6 24\n1 13).
+Fungsi: `hill_cipher(text, key, encrypt)` untuk enkripsi atau dekripsi.
 
-- Python 3.x
-- Tkinter (biasanya sudah terinstal dengan Python)
-- Numpy
+## Struktur Program
+- **Import Library**: Program menggunakan `tkinter` untuk membuat antarmuka pengguna grafis (GUI).
+- **Fungsi Utama**:
+1. `encrypt_decrypt()`: Fungsi ini mengambil teks dan kunci dari input, kemudian memanggil fungsi cipher yang sesuai berdasarkan pilihan pengguna (Vigenere, Playfair, atau Hill) untuk mengenkripsi atau mendekripsi teks.
+2. `upload_file()`: Memungkinkan pengguna untuk mengunggah file teks yang berisi pesan untuk diproses.
+- **Antarmuka Pengguna (UI)**:
+1. Beberapa label dan input untuk teks, kunci, dan pilihan cipher.
+2. Tombol untuk mengunggah file dan memproses teks.
+3. Area untuk menampilkan hasil.
 
-Untuk menginstal pustaka yang diperlukan, Anda bisa menjalankan perintah berikut:
-
-```bash
-pip install numpy
-
-Cara Penggunaan
-Jalankan Aplikasi: Untuk menjalankan aplikasi, eksekusi file main.py:
-
-bash
-python main.py
-Pilih Cipher: Pilih salah satu dari tiga cipher (Vigenère, Playfair, atau Hill) dari tombol radio yang disediakan.
-
-Masukkan Kunci Enkripsi: Berikan kunci enkripsi (minimal 12 karakter untuk keamanan).
-
-Pilih Metode Input: Pilih apakah teks akan dimasukkan melalui keyboard atau dengan mengunggah file .txt.
-
-Enkripsi/Dekripsi:
-
-Klik tombol "Encrypt" untuk mengenkripsi teks.
-Klik tombol "Decrypt" untuk mendekripsi teks.
-Lihat Hasil: Hasil enkripsi atau dekripsi akan ditampilkan di kotak teks di bagian bawah aplikasi.
-
-Deskripsi File
-main.py: Berisi implementasi GUI menggunakan Tkinter dan menangani aksi enkripsi dan dekripsi.
-ciphers.py: Berisi logika untuk cipher Vigenère, Playfair, dan Hill, termasuk fungsi-fungsi pembantu untuk pemrosesan awal dan pembuatan kunci.
-cipher_input.txt: File teks contoh untuk pengujian enkripsi dan dekripsi berbasis file.
-Algoritma Enkripsi
-Cipher Vigenère
-Cipher Vigenère menggeser setiap huruf dari teks asli berdasarkan jumlah posisi yang ditentukan oleh huruf yang sesuai dalam kunci.
-
-Enkripsi: vigenere_encrypt(text, key)
-Dekripsi: vigenere_decrypt(text, key)
-Cipher Playfair
-Cipher Playfair bekerja dengan mengenkripsi pasangan huruf (digraf) berdasarkan matriks 5x5 huruf yang dihasilkan dari kunci.
-
-Enkripsi: playfair_encrypt(text, key)
-Dekripsi: playfair_decrypt(text, key)
-Cipher Hill
-Cipher Hill adalah cipher poligrafik yang mengenkripsi pasangan huruf menggunakan perkalian matriks. Sebuah matriks 2x2 dihasilkan dari kunci.
-
-Enkripsi: hill_encrypt(text, key)
-Dekripsi: hill_decrypt(text, key)
-Contoh Penggunaan
-Anda dapat menggunakan file input contoh cipher_input.txt yang telah disediakan untuk menguji fungsi enkripsi dan dekripsi berbasis file.
-
+## Penggunaan Program
+1. Masukkan teks yang ingin dienkripsi atau didekripsi di kotak teks.
+2. Masukkan kunci yang akan digunakan (panjang minimal 12 karakter untuk Vigenere dan Playfair, dan bentuk matriks 2x2 untuk Hill).
+3. Pilih jenis cipher yang ingin digunakan.
+4. Pilih apakah ingin mengenkripsi atau mendekripsi.
+5. Klik tombol "Encrypt" dan "Decrypt" untuk mendapatkan hasilnya. Hasil akan ditampilkan di area hasil di bawah.
